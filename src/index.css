@@ -4,7 +4,7 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
+  font-family: "Montserrat", sans-serif;
   color: rgba(27, 27, 27, 0.87);
   background-color: #eeeeee;
 }
@@ -12,4 +12,21 @@
 .imgProduct{
   height: 120px;
   object-fit: contain;
+}
+
+.bg-dark{
+  background-color: #101218;
+}
+
+.buttonLight{
+  @apply bg-white cursor-pointer hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow;
+}
+.buttonDark{
+  @apply bg-gray-800 cursor-pointer hover:bg-gray-700 text-white font-semibold py-2 px-4 border border-gray-400 rounded shadow;
+}
+.buttonLightTodos{
+  @apply bg-transparent cursor-pointer hover:opacity-50 text-white font-semibold py-2 px-4;
+}
+.buttonDarkTodos{
+  @apply bg-transparent cursor-pointer hover:opacity-50 text-black font-semibold py-2 px-4;
 }

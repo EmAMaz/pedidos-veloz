@@ -1,22 +1,27 @@
-import { NavBar } from "./components/NavBar";
-import { DropdownCustom } from "./components/DropdownCustom";
+import { Route, Routes } from "react-router-dom";
+import { Public } from "./components/Public";
+import { Login } from "./auth/login";
+import { ThemeProvider } from "./context/themeContext";
+import { PanelAdmin } from "./components/PanelAdmin";
+import { ProtectedRoutes } from "./components/ProtectedRoutes";
+import { UserTokenProvider } from "./context/userTokenContext";
+import { ProductForm } from "./components/FormAddProduct";
 
 function App() {
   return (
-    <>
-      <div className="flex flex-col ">
-        <div className="flex border-b-2 mb-4 px-4">
-          <div className="w-5/6 mx-auto">
-            <NavBar />
-          </div>
-        </div>
-        <div className="w-5/6 mx-auto">
-          {/* <CardProduct /> */}
-
-          <DropdownCustom />
-        </div>
-      </div>
-    </>
+    <ThemeProvider themeValue="ligth">
+      <UserTokenProvider
+        userTokenValue={localStorage.getItem("tokenUser") || ""}
+      >
+        <Routes>
+          <Route path="/" element={<Public />} />
+          <Route path="ingresar" element={<Login />} />
+          <Route path="intranet/panel-admin" element={<ProtectedRoutes><PanelAdmin /></ProtectedRoutes>} />
+          <Route path="intranet/panel-admin/add-product" element={<ProtectedRoutes><ProductForm /></ProtectedRoutes>} />
+          <Route path="*" element={<p>There's nothing here: 404!</p>} />
+        </Routes>
+      </UserTokenProvider>
+    </ThemeProvider>
   );
 }
 

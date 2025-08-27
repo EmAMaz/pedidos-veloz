@@ -11,7 +11,7 @@ export const counterSlice = createSlice({
 
       if (index !== -1) {
         state[index].quantity += 1;
-        state[index].price += Number(action.payload.price);
+        // state[index].price += Number(action.payload.price);
         return;
       }
       state.push({
@@ -28,7 +28,7 @@ export const counterSlice = createSlice({
       if (index !== -1) {
         if (state[index].quantity > 1) {
           state[index].quantity -= 1;
-          state[index].price -= Number(action.payload.price);
+          // state[index].price -= Number(action.payload.price);
         } else {
           state.splice(index, 1);
         }

@@ -1,0 +1,26 @@
+<svg
+                    width="28px"
+                    height="28px"
+                    viewBox="0 0 32 32"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="#000000"
+                  >
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g
+                      id="SVGRepo_tracerCarrier"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></g>
+                    <g id="SVGRepo_iconCarrier">
+                      {" "}
+                      <g fill="none" fill-rule="evenodd">
+                        {" "}
+                        <path d="m0 0h32v32h-32z"></path>{" "}
+                        <path
+                          d="m16 0c8.836556 0 16 7.163444 16 16s-7.163444 16-16 16-16-7.163444-16-16 7.163444-16 16-16zm0 2c-7.7319865 0-14 6.2680135-14 14s6.2680135 14 14 14 14-6.2680135 14-14-6.2680135-14-14-14zm6 13v2h-12v-2z"
+                          fill="#202327"
+                          fill-rule="nonzero"
+                        ></path>{" "}
+                      </g>{" "}
+                    </g>
+                  </svg>

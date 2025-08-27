@@ -1,0 +1,82 @@
+const url = "http://localhost:3000/";
+class apiService {
+  async request<T>(method: string, url: string, body?: any) {
+    const response = await fetch(url, {
+      method: method,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    });
+
+    return response.json();
+  }
+  async getProducts() {
+    try {
+      const response = await this.request("get", url + `productos`);
+      return response;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  async createProduct(dataProduct: {
+    name: string;
+    price: number;
+    category: number;
+  }) {
+    try {
+      const response = await this.request("post", url + `productos`, dataProduct);
+      return response;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  async filterProductsByType(type: string) {
+    try {
+      const response = this.request(
+        "get",
+        url + `/productos/filter?type=${type}`
+      );
+      const data = await response;
+      return data;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  async getCategorys() {
+    try {
+      const response = this.request("get", url + `categorias`);
+      const data = await response;
+      return data;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  async getProductsByCategory(categoryId: string) {
+    try {
+      const response = this.request(
+        "get",
+        url + `productos` + `/filter?categoria=${Number(categoryId)}`
+      );
+      const data = await response;
+      return data;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  async loginUser(email: string, password: string) {
+    const response = this.request(
+      "post",
+      url + `usuario/login?email=${email}&password=${password}`
+    );
+    const data = await response;
+    return data;
+  }
+}
+
+export default new apiService();
