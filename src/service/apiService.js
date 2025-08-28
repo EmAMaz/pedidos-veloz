@@ -1,6 +1,6 @@
-const url = "http://localhost:3000/";
+const url = import.meta.env.VITE_API_URL ? import.meta.env.VITE_API_URL : import.meta.env.VITE_API_URL_DEV;
 class apiService {
-  async request<T>(method: string, url: string, body?: any) {
+  async request(method, url, body) {
     const response = await fetch(url, {
       method: method,
       headers: {
@@ -20,11 +20,7 @@ class apiService {
     }
   }
 
-  async createProduct(dataProduct: {
-    name: string;
-    price: number;
-    category: number;
-  }) {
+  async createProduct(dataProduct) {
     try {
       const response = await this.request("post", url + `productos`, dataProduct);
       return response;
@@ -33,7 +29,7 @@ class apiService {
     }
   }
 
-  async filterProductsByType(type: string) {
+  async filterProductsByType(type) {
     try {
       const response = this.request(
         "get",
@@ -56,7 +52,7 @@ class apiService {
     }
   }
 
-  async getProductsByCategory(categoryId: string) {
+  async getProductsByCategory(categoryId) {
     try {
       const response = this.request(
         "get",
@@ -69,7 +65,7 @@ class apiService {
     }
   }
 
-  async loginUser(email: string, password: string) {
+  async loginUser(email, password) {
     const response = this.request(
       "post",
       url + `usuario/login?email=${email}&password=${password}`

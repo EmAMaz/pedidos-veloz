@@ -3,6 +3,7 @@ import { Cart } from "./Cart";
 import { useTheme } from "../context/themeContext";
 import { Toggle } from "./Toggle";
 import { useEffect, useState } from "react";
+import { LuUser } from "react-icons/lu";
 
 export function NavBar() {
   const [isEnabled, setIsEnabled] = useState(false);
@@ -15,6 +16,11 @@ export function NavBar() {
 
   console.log(tokenAdmin);
 
+  const handleCloseSession = () => {
+    localStorage.removeItem("tokenUser");
+    window.location.reload();
+  }
+
   return (
     <div className="flex justify-between items-center w-full py-2">
       <span className={theme === "dark" ? "text-white" : "text-gray-900"}>
@@ -26,20 +32,20 @@ export function NavBar() {
             <>
               <Link
                 to="ingresar"
-                className={`cursor-pointer w-10 rounded-full p-2 ${theme === "dark" ? "hover:backdrop-brightness-200" : "hover:backdrop-brightness-95"}`}
+                className={`cursor-pointer w-min text-center flex justify-center items-center rounded-full p-2 ${theme === "dark" ? "hover:backdrop-brightness-200" : "hover:backdrop-brightness-95"}`}
               >
-                <img src={theme === "dark" ? "./user-white.svg" : "./user-black.svg"} alt="user-icon" />
+                <LuUser size="1.5em" color={`${theme === "dark" ? "white" : "black" }`}/>
               </Link>
               <Cart />
             </>
           )}
           {location.pathname == "/intranet/panel-admin" && (
-              <Link
-                to="/"
+              <button
+                onClick={() => handleCloseSession()}
                 className={`cursor-pointer w-10 rounded-full p-2 ${theme === "dark" ? "hover:backdrop-brightness-200" : "hover:backdrop-brightness-95"}`}
               >
                 <img src={theme === "dark" ? "../../public/logout-white.svg" : "../../public/logout-black.svg"} alt="user-icon" />
-              </Link>
+              </button>
           )}
           <Toggle
             enabled={isEnabled}

@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { addProduct, removeProduct } from "../features/counter/counterSlice";
 import { useTheme } from "../context/themeContext";
 import { Link } from "react-router-dom";
+import { FiMinusCircle, FiPlusCircle } from "react-icons/fi";
 
 export function CardProduct({ name, price, imagePath, id, item }) {
   const { theme } = useTheme();
@@ -19,7 +20,7 @@ export function CardProduct({ name, price, imagePath, id, item }) {
         <div className="text-center">
           <img className="w-full imgProduct" src={imagePath} />
           <div className="flex flex-col pb-4">
-            <span className="font-bold mt-2 text-gray-600">{name}</span>
+            <span className={`font-bold mt-2 ${theme === "dark" ? "text-white" : "text-gray-600"}`}>{name}</span>
             <span
               className={`font-bold text-xl ${
                 theme === "dark" ? "text-white" : "text-black"
@@ -38,16 +39,16 @@ export function CardProduct({ name, price, imagePath, id, item }) {
                     className="cursor-pointer"
                     onClick={() => dispatch(removeProduct(item))}
                   >
-                    <img src="./icons/minus.svg" alt="" />
+                    <FiMinusCircle size="1.5em" color={`${theme === "dark" ? "white" : "black" }`}/>
                   </button>
-                  <span className="text-xl font-bold">
+                  <span className={`text-xl font-bold ${theme === "dark" ? "text-white" : "text-black" }`}>
                     {listadoProductos.filter((i) => i.id === id)[0]?.quantity}
                   </span>
                   <button
                     className="cursor-pointer"
                     onClick={() => dispatch(addProduct(item))}
                   >
-                    <img src="./icons/plus.svg" alt="" />
+                    <FiPlusCircle size="1.5em" color={`${theme === "dark" ? "white" : "black" }`}/> 
                   </button>
                 </div>
               </>

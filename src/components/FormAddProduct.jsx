@@ -12,8 +12,6 @@ export const ProductForm = () => {
   });
   const { dataProduct, isSuccess, isPending, isError } = useCreateProduct();
 
-  console.log(isSuccess);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevState) => {
@@ -33,7 +31,7 @@ export const ProductForm = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-600 to-blue-500 p-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 p-4">
       <div className="bg-white rounded-xl shadow-2xl p-6 md:p-8 w-full max-w-md transform transition-all duration-300 hover:scale-[1.02]">
         <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-6">
           Agregar producto

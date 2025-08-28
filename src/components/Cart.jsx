@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { totalPriceCart } from "../utils/accionCart";
 import { useTheme } from "../context/themeContext";
 import AnimateIn from "./AnimateIn";
+import { LuShoppingCart } from "react-icons/lu";
 
 export function Cart() {
   const listadoProductos = useSelector((state) => state.counter);
@@ -41,22 +42,18 @@ export function Cart() {
     <>
       <div className={`cursor-pointer relative hover:backdrop-brightness-95 rounded-full p-2 ${theme === "dark" ? "hover:backdrop-brightness-200" : "hover:backdrop-brightness-95"}`}>
         {listadoProductos.length > 0 && (
-          <span className="absolute text-sm bottom-2 text-center left-7 h-5 w-5 bg-black text-white rounded-full">
+          <span className={`absolute text-sm font-bold top-0 left-0 text-center translate-x-[100%] h-5 w-6 rounded-full ${theme === "dark" ? "bg-white text-black" : "bg-black text-white"}`}>
             {listadoProductos.length}
           </span>
         )}
 
-        <img
-          className="w-8"
-          onClick={() => verCarrito()}
-          src={`${theme === "dark" ? "./cartWhite.svg" : "./cartBlack.svg"}`}
-        />
+        <LuShoppingCart onClick={verCarrito} size="1.5em" color={`${theme === "dark" ? "white" : "black" }`}/>
       </div>
       {carrito && (
         <AnimateIn
           from="opacity-0 translate-x-4"
           to="opacity-100 translate-x-0"
-          className="absolute top-16 bg-zinc-300 text-center border-x-2 border-2 rounded-lg"
+          className="absolute z-20 top-16 bg-zinc-300 text-center border-x-2 border-2 rounded-lg"
           delay={200}
         >
             <h2 className="text-xl font-bold border-b-2 p-2">Tu carrito</h2>

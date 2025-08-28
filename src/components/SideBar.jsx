@@ -4,13 +4,13 @@ import { useTheme } from '../context/themeContext';
 import useFilterProducts from '../hooks/useFilterProducts';
 
 export function SideBar(listProductos, loading, error) {
-      const { theme } = useTheme();
-  const { listCategorys, isLoadingCategory, isErrorCategory } = useGetCategory();
+    const { theme } = useTheme();
+    const { listCategorys, isLoadingCategory, isErrorCategory } = useGetCategory();
     const { listProductos, cleanFilter, loading, error } = useFilterProducts();
 
     return (
       <section className="flex flex-col gap-2">
-          <span className="text-lg font-bold uppercase text-nowrap">
+          <span className={`text-lg font-bold uppercase text-nowrap ${theme === "dark" ? "text-white" : "text-black" }`}>
             Categorias
           </span>
 
@@ -27,7 +27,7 @@ export function SideBar(listProductos, loading, error) {
               </button>
             ))
           ) : (
-            <p className="text-nowrap">No hay categorias...</p>
+            <p className={`text-nowrap ${theme === "dark" ? "text-white" : "text-black" }`}>No hay categorias...</p>
           )}
 
           <button

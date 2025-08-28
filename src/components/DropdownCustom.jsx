@@ -18,7 +18,7 @@ export function DropdownCustom() {
       <section className="flex">
         <div className="flex flex-col gap-4 w-40 items-center">
           <section className="flex flex-col gap-2">
-            <span className="text-lg font-bold uppercase text-nowrap">
+            <span className={`text-lg font-bold uppercase text-nowrap ${theme === "dark" ? "text-white" : "text-black" }`}>
               Categorias
             </span>
             {listCategorys ? (
