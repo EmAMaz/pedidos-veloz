@@ -1,4 +1,5 @@
-const url = import.meta.env.VITE_API_URL ? import.meta.env.VITE_API_URL : import.meta.env.VITE_API_URL_DEV;
+const url = import.meta.env.VITE_ENVIRONMENT === "PROD" ? import.meta.env.VITE_API_URL_PROD : import.meta.env.VITE_API_URL_DEV;
+
 class apiService {
   async request(method, url, body) {
     const response = await fetch(url, {
