@@ -54,11 +54,11 @@ export function CardProduct({ name, price, imagePath, id, item }) {
               </>
             ) : (
               <button
-                className="border-1 px-2 cursor-pointer font-bold text-white bg-green-600 text-xs rounded-md py-2 uppercase "
+                className="border-1 px-2 w-full cursor-pointer font-bold text-white bg-green-600 text-xs rounded-md py-2 uppercase hover:scale-102 transition duration-300 ease-in-out"
                 aria-label="Add Product"
                 onClick={() => dispatch(addProduct(item))}
               >
-                Agregar al carrito
+                Agregar
               </button>
             )}
           </div>
