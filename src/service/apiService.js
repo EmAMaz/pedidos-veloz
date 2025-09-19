@@ -14,7 +14,7 @@ class apiService {
   }
   async getProducts() {
     try {
-      const response = await this.request("get", url + `productos`);
+      const response = await this.request("get", `${url}/productos`);
       return response;
     } catch (error) {
       console.error(error);
@@ -34,7 +34,7 @@ class apiService {
     try {
       const response = this.request(
         "get",
-        url + `/productos/filter?type=${type}`
+        `${url}/productos/filter?type=${type}`
       );
       const data = await response;
       return data;
@@ -45,7 +45,7 @@ class apiService {
 
   async getCategorys() {
     try {
-      const response = this.request("get", url + `categorias`);
+      const response = this.request("get", `${url}/categorias`);
       const data = await response;
       return data;
     } catch (error) {
@@ -57,7 +57,7 @@ class apiService {
     try {
       const response = this.request(
         "get",
-        url + `productos` + `/filter?categoria=${Number(categoryId)}`
+        `${url}/productos/filter?categoria=${Number(categoryId)}`
       );
       const data = await response;
       return data;
@@ -69,7 +69,7 @@ class apiService {
   async loginUser(email, password) {
     const response = this.request(
       "post",
-      url + `usuario/login?email=${email}&password=${password}`
+      `${url}/usuario/login?email=${email}&password=${password}`
     );
     const data = await response;
     return data;
