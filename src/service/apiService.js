@@ -1,12 +1,24 @@
 const url = import.meta.env.VITE_ENVIRONMENT === "PROD" ? import.meta.env.VITE_API_URL_PROD : import.meta.env.VITE_API_URL_DEV;
 
 class apiService {
-  async request(method, url, body) {
+  async request(method, url, body, requiresAuth = false) {
+    const headers = {
+      "Content-Type": "application/json",
+    };
+
+    if (requiresAuth) {
+      const token = localStorage.getItem("tokenUser");
+      if (token) {
+          headers["Authorization"] = `Bearer ${token}`;
+      } else {
+          // Manejar el caso en que no haya token (por ejemplo, lanzar un error)
+          throw new Error("No hay token de autenticación.");
+      }
+    }
+
     const response = await fetch(url, {
       method: method,
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: headers,
       body: JSON.stringify(body),
     });
 
@@ -23,7 +35,7 @@ class apiService {
 
   async createProduct(dataProduct) {
     try {
-      const response = await this.request("post", url + `productos`, dataProduct);
+      const response = await this.request("post", `${url}/productos`, dataProduct, true);
       return response;
     } catch (error) {
       console.error(error);
