@@ -6,6 +6,7 @@ import { PanelAdmin } from "./components/PanelAdmin";
 import { ProtectedRoutes } from "./components/ProtectedRoutes";
 import { UserTokenProvider } from "./context/userTokenContext";
 import { ProductForm } from "./components/FormAddProduct";
+import { NotFound } from "./components/pages/404";
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
           <Route path="ingresar" element={<Login />} />
           <Route path="intranet/panel-admin" element={<ProtectedRoutes><PanelAdmin /></ProtectedRoutes>} />
           <Route path="intranet/panel-admin/add-product" element={<ProtectedRoutes><ProductForm /></ProtectedRoutes>} />
-          <Route path="*" element={<p>There's nothing here: 404!</p>} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </UserTokenProvider>
     </ThemeProvider>
